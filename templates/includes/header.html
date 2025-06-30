@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}"> 
+    <!-- Reference style must be 'url_for' for deployment safety -->
+    <title></title>
+</head>
+<body>
+    <header>
+        <nav class="Header">
+            <div class="logo">
+                <img class="system_logo" src="{{ url_for('static', filename='images/smartpond_logo.png') }}" alt="smartpond logo">
+                <h2>SmartPond</h2>
+            </div>
+            <div class="account">
+                <a class="alert"><img src="{{ url_for('static', filename='images/bell.png')}}"></a>
+                <div class="user_profile">
+                    <p class="name">Lebron James</p>
+                    <a href="{{ url_for('login') }}"><img class="profPic" src="{{ url_for('static', filename='images/profile-user.png')}}"></a>
+                </div>
+                <a class="change acc"><img class="dowpdown" src="{{ url_for('static', filename='images/down.png')}}"></a>
+            </div>
+        </nav>
+    </header>
+</body>
+</html>
