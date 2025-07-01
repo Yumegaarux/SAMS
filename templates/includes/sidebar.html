@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <title>Sidebar Navigation</title>
+</head>
+<body>
+    <nav class="side_bar">
+        <h2>General</h2>
+        <div class="side_bar_links">
+            <a class="dashboard" href="{{ url_for('dashboard')}}">
+                <img src="{{ url_for('static', filename='images/dashboard.png') }}" alt="Dashboard">Dashboard
+            </a>
+            <a class="control" href="{{ url_for('control')}}">
+                <img src="{{ url_for('static', filename='images/control.png') }}" alt="Control">Control
+            </a>
+            <a class="history" href="{{ url_for('history')}}">
+                <img src="{{ url_for('static', filename='images/schedule.png') }}" alt="Schedule">Archive
+            </a>
+            <a class="help" href="{{ url_for('help')}}">
+                <img src="{{ url_for('static', filename='images/question.png') }}" alt="Help">Help
+            </a>
+        </div>
+    </nav>
+</body>
+</html>
