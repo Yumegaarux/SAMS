@@ -1,0 +1,140 @@
+{% extends 'index.html' %}
+
+{% block head %}
+  <title>Relay Control Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/control.css') }}">
+{% endblock %}
+
+{% block body %}
+  <script>
+    let relayStates = {
+      relay1: false,
+      relay2: false,
+      relay3: false,
+      servo: false
+    };
+
+    function toggleRelay(relay) {
+      relayStates[relay] = !relayStates[relay];
+
+      fetch("http://192.168.31.220:5000/esp32_flask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ [relay]: relayStates[relay] })
+      })
+        .then(res => res.json())
+        .then(data => {
+          relayStates = data.relays;
+          updateButtons();
+        })
+        .catch(err => console.error("Error:", err));
+    }
+
+    function fetchRelayStatus() {
+      fetch("http://192.168.31.220:5000/esp32_flask")
+        .then(res => res.json())
+        .then(data => {
+          relayStates = data;
+          updateButtons();
+        });
+    }
+
+    function updateButtons() {
+      for (let relay in relayStates) {
+        const btn = document.getElementById(`${relay}_btn`);
+        if (!btn) continue;
+        if (relayStates[relay]) {
+          btn.textContent = "ON";
+          btn.className = "toggle-btn on";
+        } else {
+          btn.textContent = "OFF";
+          btn.className = "toggle-btn off";
+        }
+      }
+    }
+
+    window.onload = fetchRelayStatus;
+  </script>
+
+  <h1>Control</h1>
+  <div class="container">
+    <section id="Fish_and_plant_list">
+      <div class="Fish_and_plant_content">
+        <div class="plantList">
+          <div class="content">
+            <h2>Select Plants</h2>
+            <a class="manageList" href="#">Manage Plant List</a>
+          </div>
+
+          <div class="itemList">
+            <a class="selectionCard" href="dashboard.php">
+              <div class="list">
+                <img class="itemImage" src="{{ url_for('static', filename='images/pechay.png') }}">
+                <p>Chinese Cabbage</p>
+              </div>
+            </a>
+            <a class="selectionCard" href="dashboard.php">
+              <div class="list">
+                <img class="itemImage" src="{{ url_for('static', filename='images/Lettuce.png') }}">
+                <p>Lettuce</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="fishList">
+          <div class="content">
+            <h2>Select Fish</h2>
+            <a class="manageList" href="#">Manage Fish List</a>
+          </div>
+
+          <div class="itemList">
+            <a class="selectionCard" href="dashboard.php">
+              <div class="list">
+                <img class="itemImage" src="{{ url_for('static', filename='images/Nile_Tilapia.png') }}">
+                <p>Nile Tilapia</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="continue-wrapper">
+        <button id="continue_btn">Continue</button>
+      </div>
+    </section>
+
+    <section id="hardwareControls">
+      <div class="button_cards">
+        <div class="card">
+          <div class="relay">
+            <label for="relay1_btn">Watering Control</label>
+            <img class="cardImg" src="{{ url_for('static', filename='images/water.png') }}">
+            <button id="relay1_btn" class="toggle-btn off" onclick="toggleRelay('relay1')">OFF</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="relay">
+            <label for="servo_btn">Fish Fed</label>
+            <button id="servo_btn" class="toggle-btn off" onclick="toggleRelay('servo')">OFF</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="relay">
+            <label for="relay2_btn">Refill Water</label>
+            <button id="relay2_btn" class="toggle-btn off" onclick="toggleRelay('relay2')">OFF</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="relay">
+            <label for="relay3_btn">Drain Water</label>
+            <button id="relay3_btn" class="toggle-btn off" onclick="toggleRelay('relay3')">OFF</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+
+{% block head %}
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Desk</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/helpdesk.css') }}">
+{% endblock%}
+
+{% block body %}
+    <h1>How can we help?</h1>
+    <div class="container">
+        <div class="content">
+            <h2>Frequently Asked Questions</h2>
+            <a href="#">
+                <div class="question_card">
+                    <p>What is a smart aquaponics system?</p>
+                </div>
+            </a>
+            <a href="#">
+                 <div class="question_card">
+                    <p>How does a smart aquaponics system work?</p>
+                </div>
+            </a>
+            <a href="#">
+                <div class="question_card">
+                    <p>What what are the benefits of using a smart aquaponics system?</p>
+                </div>
+            </a>
+            <a href="#">
+                <div class="question_card">
+                    <p>What types of sensors are used in a smart aquaponics system?</p>
+                </div>
+            </a>
+            <a href="#">
+                <div class="question_card">
+                    <p>Can I build my own smart aquaponics system?</p>
+                </div>
+            </a>
+            <a href="#">
+                <div class="question_card">
+                    <p>What fish and plant are best suited for a smart aquaponics system?</p>
+                </div>
+            </a>
+            <a href="#">
+                <div class="question_card">
+                    <p>What challenges should I expect when setting up a smart aquaponics system?</p>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock%}
