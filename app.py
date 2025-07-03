@@ -1,6 +1,13 @@
 from flask import Flask, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
+from models import *
+
 app = Flask(__name__)
+
+app.config['SQLALCHEMYDATABASE_URI'] = 'mysql+pymysql://root:@localhost/smartpond'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
 
 # Controller for flask is app.py
 @app.route('/')
