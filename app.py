@@ -1,5 +1,8 @@
 from flask import Flask, render_template, url_for
 from models.db import db
+import matplotlib.pyplot as plt
+import io
+import base64
 
 app = Flask(__name__)
 
@@ -30,7 +33,23 @@ def control():
 @app.route("/history")
 def history():
     logs = SensorLog.query.order_by(SensorLog.datetime.desc()).all()
-    return render_template('history.html', logs=logs)
+    dates = [log.datetime for log in logs]
+    values = [log.data for log in logs]
+
+    plt.figure(figsize=(10, 4))
+    plt.plot(dates, values, marker='o')
+    plt.title('Sensor Data Over Time')
+    plt.xlabel('Date')
+    plt.ylabel('Sensor Reading')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+
+    img = io.BytesIO()
+    plt.savefig(img, format='png')
+    img.seek(0)
+    plot_data = base64.b64encode(img.getvalue()).decode()
+
+    return render_template('history.html', logs=logs, plot_url=plot_data)
 
 @app.route("/help")
 def help():
