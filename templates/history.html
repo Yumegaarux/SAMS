@@ -5,5 +5,21 @@
 {% endblock%}
 
 {% block body %}
-
+    <h2>Sensor Logs</h2>
+    <table border="1" style="margin: 0 auto;">
+        <tr>
+            <th>Sensor ID</th>
+            <th>Tank ID</th>
+            <th>Data</th>
+            <th>Date & Time</th>
+        </tr>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.sensorID }}</td>
+            <td>{{ log.tankID }}</td>
+            <td>{{ log.data }}</td>
+            <td>{{ log.datetime.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock%}

@@ -1,13 +1,14 @@
 from flask import Flask, render_template, url_for
-from flask_sqlalchemy import SQLAlchemy
-from models import *
+from models.db import db
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMYDATABASE_URI'] = 'mysql+pymysql://root:@localhost/smartpond'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:@localhost/smartpond_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
+db.init_app(app)
+
+from models import *
 
 # Controller for flask is app.py
 @app.route('/')
@@ -28,11 +29,13 @@ def control():
 
 @app.route("/history")
 def history():
-    return render_template('history.html')
+    logs = SensorLog.query.order_by(SensorLog.datetime.desc()).all()
+    return render_template('history.html', logs=logs)
 
 @app.route("/help")
 def help():
     return render_template('help.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,4 +1,4 @@
-from app import db
+from models.db import db 
 
 class ActivityArchive(db.Model):
     __tablename__ = 'activity_archive'

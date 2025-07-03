@@ -1,4 +1,4 @@
-from app import db
+from models.db import db 
 
 class UserTank(db.Model):
     __tablename__ = 'user_tank'
