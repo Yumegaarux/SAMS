@@ -1,0 +1,32 @@
+
+
+
+/* Section styling */
+section {
+    scroll-snap-align: start;
+    width: 100%;
+    background-color: #ffffff;
+    overflow: hidden;
+    padding: 30px 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 15rem;
+}
+
+/* Heading style */
+
+
+/* Canvas/chart styling */
+#sensorChart {
+    max-width: 90%;
+    width: 600px;
+    height: 300px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+}
