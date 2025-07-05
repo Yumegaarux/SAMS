@@ -32,21 +32,39 @@ h1 {
     text-align: left;
 }
 
-.question_card {
+.card {
+    text-align: left;
     border: 2px black solid;
     font-family: 'Archivo', sans-serif;
+    font-size: 14px;
     height: 45px;
-    display: flex;
-    align-items: center;
+    width: 100%;
     padding-left: 10px;
+    border-radius: 8px;
+    background-color: #ebebeb;
+}
+
+.active, .card:hover {
+    background-color: #ffffff;
+}
+
+.answer {
+    padding: 0 10px;
+    background-color: #ebebeb;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
     border-radius: 8px;
     margin-bottom: 10px;
 }
 
-.question_card p {
-    color: #173042;
+.card:after {
+    content: '\02795';
+    float: right;
+    color: black;
+    padding-right: 10px;
 }
 
-a {
-    text-decoration: none;
+.active:after {
+    content: '\2796'
 }

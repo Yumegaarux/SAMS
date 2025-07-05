@@ -12,41 +12,50 @@
     <div class="container">
         <div class="content">
             <h2>Frequently Asked Questions</h2>
-            <a href="#">
-                <div class="question_card">
-                    <p>What is a smart aquaponics system?</p>
-                </div>
-            </a>
-            <a href="#">
-                 <div class="question_card">
-                    <p>How does a smart aquaponics system work?</p>
-                </div>
-            </a>
-            <a href="#">
-                <div class="question_card">
-                    <p>What what are the benefits of using a smart aquaponics system?</p>
-                </div>
-            </a>
-            <a href="#">
-                <div class="question_card">
-                    <p>What types of sensors are used in a smart aquaponics system?</p>
-                </div>
-            </a>
-            <a href="#">
-                <div class="question_card">
-                    <p>Can I build my own smart aquaponics system?</p>
-                </div>
-            </a>
-            <a href="#">
-                <div class="question_card">
-                    <p>What fish and plant are best suited for a smart aquaponics system?</p>
-                </div>
-            </a>
-            <a href="#">
-                <div class="question_card">
-                    <p>What challenges should I expect when setting up a smart aquaponics system?</p>
-                </div>
-            </a>
+            <button type="button" class="card">What is a smart aquaponics system?</button>
+            <div class="answer">
+                    <p>malaking ipiktu sa boston siltiks ang pagkawala...</p>
+            </div>
+            <button type="button" class="card">How does a smart aquaponics system work?</button>
+            <div class="answer">
+                    <p>malaking ipiktu sa boston siltiks ang pagkawala...</p>
+            </div>
+            <button type="button" class="card">What are the benefits of using a smart aquaponics system?</button>
+            <div class="answer">
+                    <p>malaking ipiktu sa boston siltiks ang pagkawala...</p>
+            </div>
+            <button type="button" class="card">What types of sensors are used in a smart aquaponics system?</button>
+            <div class="answer">
+                    <p>malaking ipiktu sa boston siltiks ang pagkawala...</p>
+            </div>
+            <button type="button" class="card">Can I build my oqn smart aquaponics system?</button>
+            <div class="answer">
+                    <p>malaking ipiktu sa boston siltiks ang pagkawala...</p>
+            </div>
+            <button type="button" class="card">What fish and plants are best suited for a smart aquaponics system?</button>
+            <div class="answer">
+                    <p>malaking ipiktu sa boston siltiks ang pagkawala...</p>
+            </div>
+            <button type="button" class="card">What challenges should I expect when setting up a smart aquaponics system?</button>
+            <div class="answer">
+                    <p>malaking ipiktu sa boston siltiks ang pagkawala...</p>
+            </div>
         </div>
     </div>
+    <script>
+        var coll = document.getElementsByClassName("card");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+              content.style.maxHeight = null;
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+            }
+          });
+        }
+    </script>
 {% endblock%}
