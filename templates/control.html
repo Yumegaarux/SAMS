@@ -108,7 +108,7 @@
       <div class="button_cards">
         <div class="card">
           <div class="relay">
-            <label for="relay1_btn">Watering Control</label>
+            <label for="relay1_btn">Irrigation Water Management</label>
             <img class="cardImg" src="{{ url_for('static', filename='images/water.png') }}">
             <button id="relay1_btn" class="toggle-btn off" onclick="toggleRelay('relay1')">OFF</button>
           </div>
@@ -116,24 +116,18 @@
 
         <div class="card">
           <div class="relay">
-            <label for="servo_btn">Fish Fed</label>
+            <label for="servo_btn">Fish Feeder Management</label>
             <button id="servo_btn" class="toggle-btn off" onclick="toggleRelay('servo')">OFF</button>
           </div>
         </div>
 
         <div class="card">
           <div class="relay">
-            <label for="relay2_btn">Refill Water</label>
+            <label for="relay2_btn">Fish Tank Water Management</label>
             <button id="relay2_btn" class="toggle-btn off" onclick="toggleRelay('relay2')">OFF</button>
           </div>
         </div>
 
-        <div class="card">
-          <div class="relay">
-            <label for="relay3_btn">Drain Water</label>
-            <button id="relay3_btn" class="toggle-btn off" onclick="toggleRelay('relay3')">OFF</button>
-          </div>
-        </div>
       </div>
     </section>
   </div>
